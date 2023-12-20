@@ -1,7 +1,7 @@
 local component = require("lualine.component"):extend()
 local highlight = require("lualine.highlight")
 
-local copilot = require "copilot-lualine"
+local copilot = require("copilot-lualine")
 
 ---@class CopilotComponentOptions
 local default_options = {
@@ -18,7 +18,7 @@ local default_options = {
                 offline = "#FF5555"
             }
         },
-        spinners = require("spinners").dots,
+        spinners = require("copilot-lualine.spinners").dots,
         spinner_color = "#6272A4"
     },
     show_colors = false,
@@ -26,7 +26,6 @@ local default_options = {
 }
 
 local spinner_count = 1
-
 ---Return a spinner from the list of spinners
 ---@param spinners table
 ---@return string
@@ -126,7 +125,7 @@ function component:update_status()
     if self.options.show_loading and copilot.is_loading() then
         if self.options.show_colors then
             return highlight.component_format_highlight(self.highlights.spinner) ..
-               get_spinner(self.options.symbols.spinners)
+                get_spinner(self.options.symbols.spinners)
         end
         return get_spinner(self.options.symbols.spinners)
     elseif not copilot.is_online() then
