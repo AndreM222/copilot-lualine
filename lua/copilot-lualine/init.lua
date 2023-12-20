@@ -2,6 +2,8 @@ local component = {}
 local c = require("copilot.client")
 local a = require("copilot.api")
 
+print("hi")
+
 
 ---Check if copilot is enabled
 ---@return boolean
