@@ -1,9 +1,16 @@
 local component = {}
+<<<<<<< HEAD
 local c = require("copilot.client")
 local a = require("copilot.api")
 
 print("hi")
 
+=======
+local status_c, c = pcall(require, "copilot.client")
+if (not status_c) then return end
+local status_a, a = pcall(require, "copilot.api")
+if (not status_a) then return end
+>>>>>>> f11d5e8fe12220e25ceb3b18707fa312f327533e
 
 ---Check if copilot is enabled
 ---@return boolean
