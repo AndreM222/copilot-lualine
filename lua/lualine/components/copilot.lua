@@ -1,7 +1,7 @@
 local component = require("lualine.component"):extend()
 local highlight = require("lualine.highlight")
 
-local copilot = require "copilot-status"
+local copilot = require "copilot-lualine"
 
 ---@class CopilotComponentOptions
 local default_options = {
