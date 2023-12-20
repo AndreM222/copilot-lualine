@@ -3,7 +3,6 @@ local highlight = require("lualine.highlight")
 
 local copilot = require("copilot-lualine")
 
-print("Hi World")
 ---@class CopilotComponentOptions
 local default_options = {
     symbols = {
