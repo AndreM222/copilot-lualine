@@ -19,7 +19,7 @@ use "AndreM222/copilot-lualine"
 
 ## Setup
 
-You can add it anywhere you will like to.
+Add the component `copilot` to one of your lualine sections.
 example:
 ```lua
 lualine.setup({
