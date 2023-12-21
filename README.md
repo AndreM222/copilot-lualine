@@ -1,6 +1,20 @@
 # copilot-lualine
 Component for lualine with the purpose of recieving and previewing status of [copilot.lua](https://github.com/zbirenbaum/copilot.lua)
 
+`show_colors = false` - This are the default icons (All can be changed)
+
+<img style="padding-bottom:10px" src="doc/Online-Preview.png">
+<img style="padding-bottom:10px" src="doc/Disabled-Preview.png">
+<img style="padding-bottom:10px" src="doc/Loading-Preview.png">
+<img style="padding-bottom:10px" src="doc/Offline-Preview.png">
+
+`show_colors = true` - This are the default colors (All can be changed)
+
+<img style="padding-bottom:10px" src="doc/Online-Colored-Preview.png">
+<img style="padding-bottom:10px" src="doc/Disabled-Colored-Preview.png">
+<img style="padding-bottom:10px" src="doc/Loading-Colored-Preview.png">
+<img style="padding-bottom:10px" src="doc/Offline-Colored-Preview.png">
+
 #### Requirements
 - [x] [Neovim](https://neovim.io/)
 - [x] [Lualine](https://github.com/nvim-lualine/lualine.nvim)
@@ -10,11 +24,16 @@ Component for lualine with the purpose of recieving and previewing status of [co
 
 #### Using lazy.nvim
 ```lua
-("AndreM222/copilot-lualine")
+{ 'AndreM222/copilot-lualine' }
 ```
 #### Using packer.nvim
 ```lua
-use "AndreM222/copilot-lualine"
+use 'AndreM222/copilot-lualine'
+```
+
+#### Using vim-plug
+```lua
+Plug 'AndreM222/copilot-lualine'
 ```
 
 ## Setup
