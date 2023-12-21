@@ -8,14 +8,16 @@ local default_options = {
     symbols = {
         status = {
             icons = {
-                enabled = "",
-                disabled = "󰚦",
-                offline = ""
+                enabled = "",
+                disabled = "",
+                offline = "",
+                unknown = ""
             },
             hl = {
                 enabled = "#50FA7B",
                 disabled = "#6272A4",
-                offline = "#FF5555"
+                offline = "#FF5555",
+                unknown = "#6272A4"
             }
         },
         spinners = require("copilot-lualine.spinners").dots,
@@ -49,6 +51,7 @@ function component:init(options)
     self.options = vim.tbl_deep_extend("force", default_options, options or {})
 
     if options.symbols then
+        -- Icons
         if options.symbols.status.icons.enabled then
             options.symbols.status.icons = options.symbols.status.icons or {}
             options.symbols.status.icons.enabled = options.symbols.status.icons.enabled
@@ -64,6 +67,12 @@ function component:init(options)
             options.symbols.status.icons.offline = options.symbols.status.icons.offline
         end
 
+        if options.symbols.status.icons.unknown then
+            options.symbols.status.icons = options.symbols.status.icons or {}
+            options.symbols.status.icons.unknown = options.symbols.status.icons.unknown
+        end
+
+        -- Highlights
         if options.symbols.status.hl.enabled then
             options.symbols.status.hl = options.symbols.status.hl or {}
             options.symbols.status.hl.enabled = options.symbols.status.hl.enabled
@@ -77,6 +86,11 @@ function component:init(options)
         if options.symbols.status.hl.offline then
             options.symbols.status.hl = options.symbols.status.hl or {}
             options.symbols.status.hl.offline = options.symbols.status.hl.offline
+        end
+
+        if options.symbols.status.hl.unknown then
+            options.symbols.status.hl = options.symbols.status.hl or {}
+            options.symbols.status.hl.unknown = options.symbols.status.hl.unknown
         end
 
         if options.symbols.spinner_color then
@@ -96,6 +110,9 @@ function component:init(options)
     self.highlights.offline = highlight.create_component_highlight_group(
         { fg = self.options.symbols.status.hl.offline },
         'copilot_offline', self.options)
+    self.highlights.unknown = highlight.create_component_highlight_group(
+        { fg = self.options.symbols.status.hl.unknown },
+        'copilot_unknown', self.options)
     self.highlights.spinner = highlight.create_component_highlight_group(
         { fg = self.options.symbols.spinner_color },
         'copilot_spinner', self.options)
@@ -119,7 +136,11 @@ function component:update_status()
     -- All copilot API calls are blocking before copilot is attached,
     -- To avoid blocking the startup time, we check if copilot is attached
     if not attached then
-        return self.options.symbols.status.icons.disabled
+        if self.options.show_colors then
+            return highlight.component_format_highlight(self.highlights.unknown) ..
+                self.options.symbols.status.icons.unknown
+        end
+        return self.options.symbols.status.icons.unknown
     end
 
     if self.options.show_loading and copilot.is_loading() then
