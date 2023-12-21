@@ -14,16 +14,15 @@ component.is_enabled = function()
     return true
 end
 
----Check if copilot is offline
+---Check if copilot is online
 ---@return boolean
 component.is_online = function()
-    if not c.get() then
-        return true
+    if c.is_disable then
+        return false
     end
 
-    -- a.handlers.statusNotification
-    local data = c.startup_error
-    if data ~= "Warning" then
+    local data = a.status.data.status
+    if data ~= 'Warning' then
         return true
     end
 
@@ -33,7 +32,7 @@ end
 ---Show copilot running status
 ---@return boolean
 component.is_loading = function()
-    if not c.get() then
+    if c.is_disable then
         return false
     end
 
