@@ -16,13 +16,13 @@ end
 
 ---Check if copilot is online
 ---@return boolean
-component.is_online = function()
+component.is_error = function()
     if c.is_disable then
         return false
     end
 
     local data = a.status.data.status
-    if data ~= 'Warning' then
+    if data == 'Warning' then
         return true
     end
 

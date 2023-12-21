@@ -10,14 +10,14 @@ local default_options = {
             icons = {
                 enabled = "",
                 disabled = "",
-                offline = "",
+                warning = "",
                 unknown = ""
             },
             hl = {
                 enabled = "#50FA7B",
                 disabled = "#6272A4",
-                offline = "#FF5555",
-                unknown = "#6272A4"
+                warning = "#FFB86C",
+                unknown = "#FF5555"
             }
         },
         spinners = require("copilot-lualine.spinners").dots,
@@ -62,9 +62,9 @@ function component:init(options)
             options.symbols.status.icons.disabled = options.symbols.status.icons.disabled
         end
 
-        if options.symbols.status.icons.offline then
+        if options.symbols.status.icons.warning then
             options.symbols.status.icons = options.symbols.status.icons or {}
-            options.symbols.status.icons.offline = options.symbols.status.icons.offline
+            options.symbols.status.icons.warning = options.symbols.status.icons.warning
         end
 
         if options.symbols.status.icons.unknown then
@@ -83,9 +83,9 @@ function component:init(options)
             options.symbols.status.hl.disabled = options.symbols.status.hl.disabled
         end
 
-        if options.symbols.status.hl.offline then
+        if options.symbols.status.hl.warning then
             options.symbols.status.hl = options.symbols.status.hl or {}
-            options.symbols.status.hl.offline = options.symbols.status.hl.offline
+            options.symbols.status.hl.warning = options.symbols.status.hl.warning
         end
 
         if options.symbols.status.hl.unknown then
@@ -99,7 +99,7 @@ function component:init(options)
         end
     end
 
-    self.highlights = { enabled = '', disabled = '', offline = '' }
+    self.highlights = { enabled = '', disabled = '', warning = '' }
 
     self.highlights.enabled = highlight.create_component_highlight_group(
         { fg = self.options.symbols.status.hl.enabled },
@@ -107,8 +107,8 @@ function component:init(options)
     self.highlights.disabled = highlight.create_component_highlight_group(
         { fg = self.options.symbols.status.hl.disabled },
         'copilot_disabled', self.options)
-    self.highlights.offline = highlight.create_component_highlight_group(
-        { fg = self.options.symbols.status.hl.offline },
+    self.highlights.warning = highlight.create_component_highlight_group(
+        { fg = self.options.symbols.status.hl.warning },
         'copilot_offline', self.options)
     self.highlights.unknown = highlight.create_component_highlight_group(
         { fg = self.options.symbols.status.hl.unknown },
@@ -149,12 +149,12 @@ function component:update_status()
                 get_spinner(self.options.symbols.spinners)
         end
         return get_spinner(self.options.symbols.spinners)
-    elseif not copilot.is_online() then
+    elseif copilot.is_error() then
         if self.options.show_colors then
-            return highlight.component_format_highlight(self.highlights.offline) ..
-                self.options.symbols.status.icons.offline
+            return highlight.component_format_highlight(self.highlights.warning) ..
+                self.options.symbols.status.icons.warning
         end
-        return self.options.symbols.status.icons.offline
+        return self.options.symbols.status.icons.warning
     elseif not copilot.is_enabled() then
         if self.options.show_colors then
             return highlight.component_format_highlight(self.highlights.disabled) ..

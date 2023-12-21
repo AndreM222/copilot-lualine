@@ -86,14 +86,16 @@ sections = {
             symbols = {
                 status = {
                     icons = {
-                        enabled = "",
-                        disabled = "󰚦",
-                        offline = ""
+                        enabled = "",
+                        disabled = "",
+                        warning = "",
+                        unknown = ""
                     },
                     hl = {
                         enabled = "#50FA7B",
                         disabled = "#6272A4",
-                        offline = "#FF5555"
+                        warning = "#FFB86C",
+                        unknown = "#FF5555"
                     }
                 },
                 spinners = require("copilot-lualine.spinners").dots,
