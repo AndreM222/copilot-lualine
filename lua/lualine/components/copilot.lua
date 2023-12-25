@@ -50,55 +50,6 @@ function component:init(options)
     component.super.init(self, options)
     self.options = vim.tbl_deep_extend("force", default_options, options or {})
 
-    if options.symbols then
-        -- Icons
-        if options.symbols.status.icons.enabled then
-            options.symbols.status.icons = options.symbols.status.icons or {}
-            options.symbols.status.icons.enabled = options.symbols.status.icons.enabled
-        end
-
-        if options.symbols.status.icons.disabled then
-            options.symbols.status.icons = options.symbols.status.icons or {}
-            options.symbols.status.icons.disabled = options.symbols.status.icons.disabled
-        end
-
-        if options.symbols.status.icons.warning then
-            options.symbols.status.icons = options.symbols.status.icons or {}
-            options.symbols.status.icons.warning = options.symbols.status.icons.warning
-        end
-
-        if options.symbols.status.icons.unknown then
-            options.symbols.status.icons = options.symbols.status.icons or {}
-            options.symbols.status.icons.unknown = options.symbols.status.icons.unknown
-        end
-
-        -- Highlights
-        if options.symbols.status.hl.enabled then
-            options.symbols.status.hl = options.symbols.status.hl or {}
-            options.symbols.status.hl.enabled = options.symbols.status.hl.enabled
-        end
-
-        if options.symbols.status.hl.disabled then
-            options.symbols.status.hl = options.symbols.status.hl or {}
-            options.symbols.status.hl.disabled = options.symbols.status.hl.disabled
-        end
-
-        if options.symbols.status.hl.warning then
-            options.symbols.status.hl = options.symbols.status.hl or {}
-            options.symbols.status.hl.warning = options.symbols.status.hl.warning
-        end
-
-        if options.symbols.status.hl.unknown then
-            options.symbols.status.hl = options.symbols.status.hl or {}
-            options.symbols.status.hl.unknown = options.symbols.status.hl.unknown
-        end
-
-        if options.symbols.spinner_color then
-            options.symbols = options.symbols or {}
-            options.symbols.spinner_color = options.symbols.spinner_color
-        end
-    end
-
     self.highlights = { enabled = '', disabled = '', warning = '' }
 
     self.highlights.enabled = highlight.create_component_highlight_group(
