@@ -116,8 +116,8 @@ sections = {
 ## Contributors
 
 Thanks everyone for the support
-<div style="text-align: center">
+<p align="center">
     <a href="https://github.com/AndreM222/copilot-lualine/graphs/contributors">
         <img src="https://contrib.rocks/image?repo=AndreM222/copilot-lualine" />
     </a>
-</div>
+</p>
