@@ -21,6 +21,7 @@ Component for lualine with the purpose of recieving and previewing status of [co
 - [x] [Neovim](https://neovim.io/)
 - [x] [Lualine](https://github.com/nvim-lualine/lualine.nvim)
 - [x] [Copilot.lua](https://github.com/zbirenbaum/copilot.lua)
+- [x] [Nerd Fonts](https://www.nerdfonts.com/#home) *- For Default Icons*
 
 ## Installation
 
