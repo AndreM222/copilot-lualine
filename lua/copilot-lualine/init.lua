@@ -17,7 +17,7 @@ end
 ---Check if copilot is online
 ---@return boolean
 component.is_error = function()
-    if c.is_disable then
+    if c.is_disabled() then
         return false
     end
 
@@ -32,7 +32,7 @@ end
 ---Show copilot running status
 ---@return boolean
 component.is_loading = function()
-    if c.is_disable then
+    if c.is_disabled() then
         return false
     end
 
