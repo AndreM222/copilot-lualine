@@ -9,12 +9,14 @@ local default_options = {
         status = {
             icons = {
                 enabled = " ",
+                sleep = " ",
                 disabled = " ",
                 warning = " ",
                 unknown = " "
             },
             hl = {
                 enabled = "#50FA7B",
+                sleep = "#AEB7D0",
                 disabled = "#6272A4",
                 warning = "#FFB86C",
                 unknown = "#FF5555"
@@ -52,6 +54,9 @@ function component:init(options)
 
     self.highlights = { enabled = '', disabled = '', warning = '' }
 
+    self.highlights.sleep = highlight.create_component_highlight_group(
+        { fg = self.options.symbols.status.hl.sleep },
+        'copilot_sleep', self.options)
     self.highlights.enabled = highlight.create_component_highlight_group(
         { fg = self.options.symbols.status.hl.enabled },
         'copilot_enabled', self.options)
@@ -112,6 +117,12 @@ function component:update_status()
                 self.options.symbols.status.icons.disabled
         end
         return self.options.symbols.status.icons.disabled
+    elseif not copilot.is_sleep() then
+        if self.options.show_colors then
+            return highlight.component_format_highlight(self.highlights.sleep) ..
+                self.options.symbols.status.icons.sleep
+        end
+        return self.options.symbols.status.icons.sleep
     else
         if self.options.show_colors then
             return highlight.component_format_highlight(self.highlights.enabled) ..

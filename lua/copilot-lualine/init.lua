@@ -44,4 +44,14 @@ component.is_loading = function()
     return false
 end
 
+---Check auto trigger suggestions
+---@return boolean
+component.is_sleep = function()
+    if c.is_disabled() then
+        return false
+    end
+
+    return vim.b.copilot_suggestion_auto_trigger
+end
+
 return component
