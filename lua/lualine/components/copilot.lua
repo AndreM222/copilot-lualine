@@ -8,10 +8,10 @@ local default_options = {
     symbols = {
         status = {
             icons = {
-                enabled = "",
-                disabled = "",
-                warning = "",
-                unknown = ""
+                enabled = " ",
+                disabled = " ",
+                warning = " ",
+                unknown = " "
             },
             hl = {
                 enabled = "#50FA7B",
