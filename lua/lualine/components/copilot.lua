@@ -91,7 +91,8 @@ end
 function component:update_status()
     -- All copilot API calls are blocking before copilot is attached,
     -- To avoid blocking the startup time, we check if copilot is attached
-    if not attached then
+    local copilot_loaded = package.loaded["copilot"] ~= nil
+    if not copilot_loaded or not attached then
         if self.options.show_colors then
             return highlight.component_format_highlight(self.highlights.unknown) ..
                 self.options.symbols.status.icons.unknown
