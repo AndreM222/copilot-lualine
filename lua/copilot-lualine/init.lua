@@ -1,8 +1,21 @@
 local component = {}
-local status_c, c = pcall(require, "copilot.client")
-if (not status_c) then return end
-local status_a, a = pcall(require, "copilot.api")
-if (not status_a) then return end
+
+-- From TJDevries
+-- https://github.com/tjdevries/lazy-require.nvim
+local function lazy_require(require_path)
+    return setmetatable({}, {
+        __index = function(_, key)
+            return require(require_path)[key]
+        end,
+
+        __newindex = function(_, key, value)
+            require(require_path)[key] = value
+        end,
+    })
+end
+
+local c = lazy_require("copilot.client")
+local a = lazy_require("copilot.api")
 
 ---Check if copilot is enabled
 ---@return boolean
