@@ -80,6 +80,9 @@ function component:init(options)
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if client and client.name == "copilot" then
                 attached = true
+                require("copilot.api").register_status_notification_handler(function()
+                    require("lualine").refresh()
+                end)
                 return true
             end
             return false
