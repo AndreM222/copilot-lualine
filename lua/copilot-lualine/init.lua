@@ -17,10 +17,18 @@ end
 local c = lazy_require("copilot.client")
 local a = lazy_require("copilot.api")
 
+local is_current_buffer_attached = function()
+    return c.buf_is_attached(vim.api.nvim_get_current_buf())
+end
+
 ---Check if copilot is enabled
 ---@return boolean
 component.is_enabled = function()
     if c.is_disabled() then
+        return false
+    end
+
+    if not is_current_buffer_attached() then
         return false
     end
 
@@ -31,6 +39,10 @@ end
 ---@return boolean
 component.is_error = function()
     if c.is_disabled() then
+        return false
+    end
+
+    if not is_current_buffer_attached() then
         return false
     end
 
@@ -49,6 +61,10 @@ component.is_loading = function()
         return false
     end
 
+    if not is_current_buffer_attached() then
+        return false
+    end
+
     local data = a.status.data.status
     if data == 'InProgress' then
         return true
@@ -61,6 +77,10 @@ end
 ---@return boolean
 component.is_sleep = function()
     if c.is_disabled() then
+        return false
+    end
+
+    if not is_current_buffer_attached() then
         return false
     end
 
