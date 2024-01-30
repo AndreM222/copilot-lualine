@@ -4,6 +4,7 @@ Component for lualine with the purpose of recieving and previewing status of [co
 `show_colors = false` - This are the default icons (All can be changed)
 
 <img style="padding-bottom:5px" src="doc/Copilot-Enabled-Preview.png" />
+<img style="padding-bottom:5px" src="doc/Copilot-Sleep-Preview.png" />
 <img style="padding-bottom:5px" src="doc/Copilot-Disabled-Preview.png" />
 <img style="padding-bottom:5px" src="doc/Copilot-Loading-Preview.png" />
 <img style="padding-bottom:5px" src="doc/Copilot-Warning-Preview.png" />
@@ -12,6 +13,7 @@ Component for lualine with the purpose of recieving and previewing status of [co
 `show_colors = true` - This are the default colors (All can be changed)
 
 <img style="padding-bottom:5px" src="doc/Copilot-Enabled-Colored-Preview.png" />
+<img style="padding-bottom:5px" src="doc/Copilot-Sleep-Colored-Preview.png" />
 <img style="padding-bottom:5px" src="doc/Copilot-Disabled-Colored-Preview.png" />
 <img style="padding-bottom:5px" src="doc/Copilot-Loading-Colored-Preview.png" />
 <img style="padding-bottom:5px" src="doc/Copilot-Warning-Colored-Preview.png" />
