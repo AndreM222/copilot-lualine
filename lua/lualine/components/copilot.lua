@@ -121,7 +121,7 @@ function component:update_status()
                 self.options.symbols.status.icons.disabled
         end
         return self.options.symbols.status.icons.disabled
-    elseif not copilot.is_sleep() then
+    elseif copilot.is_sleep() then
         if self.options.show_colors then
             return highlight.component_format_highlight(self.highlights.sleep) ..
                 self.options.symbols.status.icons.sleep
