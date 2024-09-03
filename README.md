@@ -120,12 +120,12 @@ sections = {
 }
 ```
 
-If you desire to use the colors of a hihglight group, there is a function
+If you desire to use the colors of a highlight group, there is a function
 you can call for that usage:
 
 ```lua
 hl = {
-    enabled = require('copilot-lualine.colors').get_hl_value(0, "DiagnosticWarn", "fg"),
+    enabled = require('copilot-lualine.colors').get_hl_value(0, "DiagnosticWarn", "fg"), -- hl value
     sleep = "#AEB7D0",
     disabled = "#6272A4",
     warning = "#FFB86C",
