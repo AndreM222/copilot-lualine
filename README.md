@@ -81,7 +81,9 @@ lualine.setup({
     extensions = {}
 })
 ```
+
 Customization is available. For example:
+
 ```lua
 sections = {
     lualine_x = {
@@ -115,6 +117,19 @@ sections = {
         'fileformat',
         'filetype'
     }
+}
+```
+
+If you desire to use the colors of a hihglight group, there is a function
+you can call for that usage:
+
+```lua
+hl = {
+    enabled = require('copilot-lualine.colors').get_hl_value(0, "DiagnosticWarn", "fg"),
+    sleep = "#AEB7D0",
+    disabled = "#6272A4",
+    warning = "#FFB86C",
+    unknown = "#FF5555"
 }
 ```
 
