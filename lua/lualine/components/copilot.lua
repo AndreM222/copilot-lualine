@@ -22,7 +22,7 @@ local default_options = {
                 unknown = "#FF5555"
             }
         },
-        spinners = require("copilot-lualine.spinners").dots,
+        spinners = "dots",
         spinner_color = "#6272A4"
     },
     show_colors = false,
@@ -34,12 +34,35 @@ local spinner_count = 1
 ---@param spinners table
 ---@return string
 local function get_spinner(spinners)
-    local spinner = spinners[spinner_count]
-    spinner_count = spinner_count + 1
-    if spinner_count > #spinners then
-        spinner_count = 1
+    if type(spinners) == "table" then
+        local spinner = spinners[spinner_count]
+
+        spinner_count = spinner_count + 1
+
+        if spinner_count > #spinners then
+            spinner_count = 1
+        end
+
+        return spinner
     end
-    return spinner
+
+    if type(spinners) == "string" then
+        if not require("copilot-lualine.spinners")[spinners] then
+            return spinners
+        end
+
+        local spinner = require("copilot-lualine.spinners")[spinners][spinner_count]
+
+        spinner_count = spinner_count + 1
+
+        if spinner_count > #spinners then
+            spinner_count = 1
+        end
+
+        return spinner
+    end
+
+    return "Invalid"
 end
 
 -- Whether copilot is attached to a buffer
