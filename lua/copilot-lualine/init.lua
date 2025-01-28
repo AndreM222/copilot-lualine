@@ -85,9 +85,9 @@ component.is_sleep = function()
     end
 
     if vim.b.copilot_suggestion_auto_trigger == nil then
-        return lazy_require("copilot.config").get("suggestion").auto_trigger
+        return not lazy_require("copilot.config").get("suggestion").auto_trigger
     end
-    return vim.b.copilot_suggestion_auto_trigger
+    return not vim.b.copilot_suggestion_auto_trigger
 end
 
 return component
