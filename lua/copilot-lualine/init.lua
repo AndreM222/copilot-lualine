@@ -15,7 +15,7 @@ local function lazy_require(require_path)
 end
 
 local c = lazy_require("copilot.client")
-local a = lazy_require("copilot.api")
+local s = lazy_require("copilot.status")
 
 local is_current_buffer_attached = function()
     return c.buf_is_attached(vim.api.nvim_get_current_buf())
@@ -46,7 +46,7 @@ component.is_error = function()
         return false
     end
 
-    local data = a.status.data.status
+    local data = s.data.status
     if data == 'Warning' then
         return true
     end
@@ -65,7 +65,7 @@ component.is_loading = function()
         return false
     end
 
-    local data = a.status.data.status
+    local data = s.data.status
     if data == 'InProgress' then
         return true
     end
@@ -85,7 +85,7 @@ component.is_sleep = function()
     end
 
     if vim.b.copilot_suggestion_auto_trigger == nil then
-        return lazy_require("copilot.config").config.suggestion.auto_trigger
+        return lazy_require("copilot.config").suggestion.auto_trigger
     end
     return vim.b.copilot_suggestion_auto_trigger
 end
